@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Transaksi;
+use App\Models\Transaksi_detail;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CustomerSeeder;
 
@@ -14,6 +16,9 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		CustomerSeeder::class;
+		$this->call(CustomerSeeder::class);
+		$this->call(TransaksiSeeder::class);
+		$this->call(TransaksiDetailSeeder::class);
+		$this->call(UserSeeder::class);
 	}
 }

@@ -21,7 +21,7 @@
 							<td>{{ $loop->iteration }}</td>
 							<td> {{ $item->nama_produk }} </td>
 							<td> {{ $item->harga }} </td>
-							<td> <img class="img-fluid" width="70px" src="{{ asset($item->gambar) }}"> </td>
+							<td> <img class="img-fluid" width="70px" src="{{ asset('storage'.$item->gambar) }}"> </td>
 							<td> <a class="btn btn-success btn-sm" data-toggle="modal"
 									data-target="#modalEdit{{ $item->id }}"> <i class="fas fa-pencil-alt"></i>
 								</a>

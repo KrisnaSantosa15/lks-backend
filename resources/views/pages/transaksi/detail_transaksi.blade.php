@@ -32,7 +32,7 @@
 						<td>{{ $item->kode }} | {{ $item->nama_lengkap }}</td>
 						<td>{{ $item->alamat_lengkap }}</td>
 						<td>{{ $item->tanggal }}</td>
-						<td>{{ ($item->harga*$item->jumlah) }}</td>
+						<td> {{ $item->harga*$item->jumlah }} </td>
 					</tr>
 					@endforeach
 

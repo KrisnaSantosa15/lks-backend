@@ -25,7 +25,7 @@
 					<tr>
 						<td> {{ $loop->iteration }} </td>
 						<td><img width="70px" class="img-fluid"
-								src="{{ asset($item->gambar) }}">{{ $item->nama_produk }}
+								src="{{ asset('gambar/'.$item->gambar) }}">{{ $item->nama_produk }}
 						</td>
 						<td>{{ $item->harga }}</td>
 						<td>{{ $item->jumlah }}</td>

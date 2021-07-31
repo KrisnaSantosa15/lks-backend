@@ -21,7 +21,7 @@
 							<td>{{ $loop->iteration }}</td>
 							<td> {{ $item->nama_produk }} </td>
 							<td> {{ $item->harga }} </td>
-							<td> <img class="img-fluid" width="70px" src="{{ asset('storage'.$item->gambar) }}"> </td>
+							<td> <img class="img-fluid" width="70px" src="{{ asset('gambar/'.$item->gambar) }}"> </td>
 							<td> <a class="btn btn-success btn-sm" data-toggle="modal"
 									data-target="#modalEdit{{ $item->id }}"> <i class="fas fa-pencil-alt"></i>
 								</a>
@@ -63,7 +63,7 @@
 						</select>
 
 						<label for="">Deskripsi</label>
-						<textarea name="deskripsi" id="summernote">{{ old('dskripsi') }}</textarea>
+						<textarea name="deskripsi" id="summernote">{{ old('deskripsi') }}</textarea>
 						@error('nama_produk')
 						<p class="text-danger">{{ $message }}</p>
 						@enderror
@@ -147,7 +147,8 @@
 							<textarea name="deskripsi" id="summernote2"> {{ $item->deskripsi }} </textarea>
 						</div>
 						<div class="col-md-4">
-							<img class="img-fluid" src=" {{ asset($item->gambar) }} " alt="{{ $item->nama_produk }}">
+							<img class="img-fluid" src=" {{ asset('gambar/'.$item->gambar) }} "
+								alt="{{ $item->nama_produk }}">
 						</div>
 					</div>
 					<button class=" btn btn-primary float-right">Edit Data</button>

@@ -15,19 +15,19 @@ class TransaksiDetailSeeder extends Seeder
 	public function run()
 	{
 		DB::table('transaksi_detail')->insert([
-			'produk_id' => 5,
+			'produk_id' => 1,
 			'jumlah' => 2,
-			'transaksi_id' => 3
+			'transaksi_id' => 1
 		]);
 		DB::table('transaksi_detail')->insert([
-			'produk_id' => 6,
+			'produk_id' => 2,
 			'jumlah' => 4,
-			'transaksi_id' => 3
+			'transaksi_id' => 1
 		]);
 		DB::table('transaksi_detail')->insert([
-			'produk_id' => 7,
+			'produk_id' => 3,
 			'jumlah' => 3,
-			'transaksi_id' => 3
+			'transaksi_id' => 1
 		]);
 	}
 }

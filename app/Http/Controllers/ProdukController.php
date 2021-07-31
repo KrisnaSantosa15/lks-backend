@@ -44,9 +44,17 @@ class ProdukController extends Controller
 	 */
 	public function store(ProdukRequest $request)
 	{
-		$data = $request->all();
-		$data['gambar'] = $request->file('gambar')->store('assets/produk', 'public');
-		Produk::create($data);
+		$dataGambar = $request->gambar;
+		$namaGambar = time() . date('Ymdhis') . $dataGambar->getClientOriginalName();
+		$upload = new Produk;
+		$upload->nama_produk = $request->nama_produk;
+		$upload->kategori_id = $request->kategori_id;
+		$upload->deskripsi = $request->deskripsi;
+		$upload->harga = $request->harga;
+		$upload->gambar = $namaGambar;
+
+		$upload->save();
+		$dataGambar->move(public_path('gambar/'), $namaGambar);
 
 		return redirect()->route('produk.index')->with('success', 'Data berhasil ditambahkan');
 	}
@@ -84,10 +92,17 @@ class ProdukController extends Controller
 	{
 
 		if ($request->file('gambar')) {
-			unlink(public_path() . '/storage/' . $produk->gambar);
-			$data = $request->all();
-			$data['gambar'] = $request->file('gambar')->store('assets/produk', 'public');
-			$produk->update($data);
+			unlink(public_path('gambar/') . $produk->gambar);
+			$dataGambar = $request->gambar;
+			$namaGambar = time() . date('Ymdhis') . $dataGambar->getClientOriginalName();
+			$dataGambar->move(public_path('gambar/'), $namaGambar);
+
+			$produk->nama_produk = $request->nama_produk;
+			$produk->deskripsi = $request->deskripsi;
+			$produk->harga = $request->harga;
+			$produk->kategori_id = $request->kategori_id;
+			$produk->gambar = $namaGambar;
+			$produk->update();
 		} else {
 			$produk->update([
 				'nama_produk' => $request->nama_produk,
@@ -108,7 +123,7 @@ class ProdukController extends Controller
 	 */
 	public function destroy(Produk $produk)
 	{
-		$path = public_path() . '/storage/' . $produk->gambar;
+		$path = public_path('gambar/') . $produk->gambar;
 		unlink($path);
 		$produk->delete($produk->id);
 		return redirect()->route('produk.index')->with('success', 'Data berhasil dihapus');
